@@ -6,10 +6,15 @@ class WebSocketService {
     this.reconnectAttempts = 0;
     this.maxReconnectAttempts = 5;
     this.reconnectTimeout = null;
-    console.log('WebSocketService initialized');
+    this.disabled = true; // Temporarily disable websocket connections
+    console.log('WebSocketService initialized (connections disabled)');
   }
 
   connect() {
+    if (this.disabled) {
+      console.log('WebSocket connections are temporarily disabled');
+      return;
+    }
     try {
       console.log('Connecting to pumpportal.fun WebSocket...');
       this.ws = new WebSocket('wss://pumpportal.fun/api/data');
