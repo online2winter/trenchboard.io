@@ -6,8 +6,8 @@ class WebSocketService {
     this.reconnectAttempts = 0;
     this.maxReconnectAttempts = 5;
     this.reconnectTimeout = null;
-    this.disabled = true; // Temporarily disable websocket connections
-    console.log('WebSocketService initialized (connections disabled)');
+    this.disabled = false; // Enable websocket connections
+    console.log('WebSocketService initialized');
   }
 
   connect() {

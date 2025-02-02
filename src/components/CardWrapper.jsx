@@ -14,11 +14,11 @@ static getDerivedStateFromError(error) {
 render() {
     if (this.state.hasError) {
     return (
-        <div className="p-4 bg-red-100 dark:bg-red-900 rounded-lg">
-        <h3 className="text-red-800 dark:text-red-200 font-medium">Something went wrong</h3>
-        <button
+        <div className="p-4 bg-red-500/10 backdrop-blur-lg rounded-lg border border-red-500/20">
+            <h3 className="text-red-400 font-medium">Something went wrong</h3>
+            <button
             onClick={() => this.setState({ hasError: false })}
-            className="mt-2 px-4 py-2 bg-red-200 dark:bg-red-800 text-red-800 dark:text-red-200 rounded hover:bg-red-300 dark:hover:bg-red-700 transition-colors"
+            className="mt-2 px-4 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition-all duration-300 hover:scale-[1.02]"
         >
             Try again
         </button>
@@ -46,26 +46,29 @@ className = "",
 return (
     <ErrorBoundary>
     <div
-        className={`
-        bg-white dark:bg-gray-800 
-        rounded-xl shadow-sm hover:shadow-md
-        transition-all duration-300 ease-in-out
-        border border-gray-100 dark:border-gray-700
-        ${className}
-        `}
+    className={`
+    relative overflow-hidden
+    rounded-2xl bg-black/20 backdrop-blur-lg
+    border border-white/5
+    transition-all duration-300 ease-in-out
+    hover:shadow-[0_0_20px_rgba(0,255,178,0.15)]
+    hover:scale-[1.02]
+    ${className}
+    `}
     >
         {/* Card Header */}
-        <div className="p-4 border-b border-gray-100 dark:border-gray-700">
-        <div className="flex justify-between items-center">
+        <div className="p-4 border-b border-white/5 relative">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#00ffaa]/5 to-[#00c8ff]/5 pointer-events-none" />
+            <div className="flex justify-between items-center relative">
             <div>
-            <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
+                <h2 className="text-lg font-semibold text-white">
                 {title}
-            </h2>
-            {subtitle && (
-                <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                {subtitle}
+                </h2>
+                {subtitle && (
+                <p className="text-sm text-[#00ffaa]/70 mt-1">
+                    {subtitle}
                 </p>
-            )}
+                )}
             </div>
             {headerRight && (
             <div className="flex items-center">{headerRight}</div>
@@ -74,10 +77,13 @@ return (
         </div>
 
         {/* Card Content */}
-        <div className="p-4">
-        <Suspense fallback={<LoadingSpinner />}>
-            {isLoading ? <LoadingSpinner /> : children}
-        </Suspense>
+        <div className="p-4 relative">
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#00ffaa]/5 to-[#00c8ff]/5 pointer-events-none" />
+            <div className="relative">
+            <Suspense fallback={<LoadingSpinner />}>
+                {isLoading ? <LoadingSpinner /> : children}
+            </Suspense>
+            </div>
         </div>
     </div>
     </ErrorBoundary>

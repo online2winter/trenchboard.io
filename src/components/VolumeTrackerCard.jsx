@@ -49,16 +49,16 @@ const VolumeTrackerCard = () => {
 
   if (isLoading) {
     return (
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h2 className="text-xl font-bold mb-4">Volume Tracker</h2>
-        <div className="space-y-4">
-          <div className="animate-pulse flex justify-between">
-            <span>24h Volume</span>
-            <div className="h-4 bg-gray-200 rounded w-24"></div>
-          </div>
-          <div className="animate-pulse flex justify-between">
-            <span>Average Volume</span>
-            <div className="h-4 bg-gray-200 rounded w-24"></div>
+    <div className="rounded-2xl bg-black/20 backdrop-blur-lg border border-white/5 p-6">
+    <h2 className="text-xl font-bold mb-4 text-white">Volume Tracker</h2>
+    <div className="space-y-4">
+        <div className="animate-pulse flex justify-between items-center p-3 bg-white/5 rounded-lg">
+        <span className="text-white/70">24h Volume</span>
+        <div className="h-4 bg-white/10 rounded w-24"></div>
+        </div>
+        <div className="animate-pulse flex justify-between items-center p-3 bg-white/5 rounded-lg">
+        <span className="text-white/70">Average Volume</span>
+        <div className="h-4 bg-white/10 rounded w-24"></div>
           </div>
         </div>
       </div>
@@ -66,16 +66,16 @@ const VolumeTrackerCard = () => {
   }
 
   return (
-    <div className="bg-white rounded-lg shadow-lg p-6">
-      <h2 className="text-xl font-bold mb-4">Volume Tracker</h2>
-      <div className="space-y-4">
-        <div className="flex justify-between">
-          <span>24h Volume</span>
-          <span className="font-bold">{formatVolume(totalVolume)}</span>
+    <div className="rounded-2xl bg-black/20 backdrop-blur-lg border border-white/5 p-6 transition-all duration-300 hover:shadow-[0_0_30px_rgba(0,255,178,0.1)]">
+    <h2 className="text-xl font-bold mb-4 text-white">Volume Tracker</h2>
+    <div className="space-y-4">
+        <div className="flex justify-between items-center p-3 bg-gradient-to-r from-[#00ffaa]/10 to-[#00c8ff]/10 rounded-lg border border-white/10 hover:shadow-[0_0_20px_rgba(0,255,178,0.1)] transition-all duration-300">
+        <span className="text-white/70">24h Volume</span>
+        <span className="font-bold text-[#00ffaa]">{formatVolume(totalVolume)}</span>
         </div>
-        <div className="flex justify-between">
-          <span>Average Volume</span>
-          <span className="font-bold">{formatVolume(averageVolume)}</span>
+        <div className="flex justify-between items-center p-3 bg-gradient-to-r from-[#00c8ff]/10 to-[#00ffaa]/10 rounded-lg border border-white/10 hover:shadow-[0_0_20px_rgba(0,255,178,0.1)] transition-all duration-300">
+        <span className="text-white/70">Average Volume</span>
+        <span className="font-bold text-[#00c8ff]">{formatVolume(averageVolume)}</span>
         </div>
       </div>
     </div>
